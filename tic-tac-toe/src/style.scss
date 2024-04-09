@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Rock+Salt&display=swap');
+$font-text: "Rock-Salt";
+$font-game: "Indie-Flower";
+$color-primary: #cccccc;
+$color-secondary: black;
+$color-tertiary: red;
+
+
+
+*{
+  margin: 5px;
+  padding: 5px;
+  
+}
+
+.game__container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+
+  .game__players{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
+
