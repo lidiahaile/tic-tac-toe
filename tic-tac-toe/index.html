@@ -11,34 +11,43 @@
  <body>
   <!--game container-->
     <section class="game__container">
-
+      
     <!--score and symbols-->
    <section class="game__players">
-    <div class="game__players--xo">
-      <button class="game__players--x">X</button>
-      <div class="game__players--score">Score: </div>
-    </div>
+     <div class="game__players--xo">
+      <button class="game__players--button">X</button>
+       <p class="game__score">score: 0</p>
+     </div>
 
-    <div class="game__players">
-      <button class="game__players--o">O</button>
-      <div class="game__players--score">Score:</div>
-    </div>
-    </section>
-
-   <!--game grid-->
-        <p class="game__text">insert text</p>
-        <section class="game__grid">
-          <button class="game__grid--one"></button>
-          <button class="game__grid--two"></button>
-          <button class="game__grid--three"></button>
-          <button class="game__grid--four"></button>
-          <button class="game__grid--five"></button>
-          <button class="game__grid--six"></button>
-          <button class="game__grid--seven"></button>
-          <button class="game__grid--eight"></button>
-          <button class="game__grid--nine"></button>
-        </section>
+     <div class="game__players--xo">
+      <button class="game__players--button">o</button>
+        <p class="game__score">score: 0</p>
+     </div>
    </section>
 
+   <!--game grid-->
+        <p class="game__text"></p>
+        <section class="game__grid">
+          <div class="game__grid--divider" >
+          <button class="game__grid--one" id="game__grid--button" > </button>
+          <button class="game__grid--two" id="game__grid--button"></button>
+          <button class="game__grid--three" id="game__grid--button"></button>
+          </div>
+
+          <div class="game__grid--divider">
+          <button class="game__grid--four" id="game__grid--button"></button>
+          <button class="game__grid--five" id="game__grid--button"></button>
+          <button class="game__grid--six" id="game__grid--button"></button>
+          </div>
+          
+          <div class="game__grid--divider">
+          <button class="game__grid--seven" id="game__grid--button"></button>
+          <button class="game__grid--eight" id="game__grid--button"></button>
+          <button class="game__grid--nine" id="game__grid--button"></button>
+          </div>
+        </section>
+        <p class="game__button--restart">Restart Game</p>
+   </section>
+<script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -1,29 +1,121 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Rock+Salt&display=swap');
-$font-text: "Rock-Salt";
-$font-game: "Indie-Flower";
-$color-primary: #cccccc;
+$font-text: "Rock Salt";
+$font-game: "Indie Flower";
+$color-primary: white;
 $color-secondary: black;
 $color-tertiary: red;
+
 
 
 
 *{
   margin: 5px;
   padding: 5px;
+ 
   
 }
+body{
+   background-image: url('./images/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 
 .game__container{
   display:flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  align-self: center;
+  height:60%;
+  width: 100%;
+  
+  
   
 
 
   .game__players{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+   
+    
+    
+    
+
+
+    .game__players--xo{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border: 1.5px solid $color-secondary;
+      margin: 10px;
+      
+    
+      .game__players--button{
+        padding: 0%;
+        border: 0px;
+        font-family: $font-text;
+        font-size: 120%;
+        background-color: $color-primary;
+        border: none;
+        
+      }
+
+      .game__score{
+        font-size:80%;
+        font-family: $font-text;
+      }
+    }
   }
+
+  .game__grid{
+    padding:0px;
+    border: 0px;
+    width: auto;
+    height: auto;
+    
+    
+    
+    .grid--image{
+      width:80%;
+    }
+    
+   
+   #game__grid--button{
+     width: 70px;
+     height: 70px;
+     padding: 0%;
+     border: 0%;
+     margin:0;
+    border: none;
+    border: 2px solid $color-secondary;
+    
+    
+    }
+
+    .game__grid--divider{
+      padding: 0px;
+      border: 0px;
+      margin: 0px;
+    }
+  
+ 
+  }
+
+  .game__button--restart{
+    font-family: $font-text;
+    border: 1.5px solid $color-secondary;
+    
+
+
+
+    
+  }
+
+
+  
 }
 
 
