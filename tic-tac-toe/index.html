@@ -11,23 +11,24 @@
  <body>
   <!--game container-->
     <section class="game__container">
+    <h1 class="game__name">TIC TAC TOE</h1>
       
     <!--score and symbols-->
    <section class="game__players">
      <div class="game__players--xo">
-      <button class="game__players--button">X</button>
-       <p class="game__score">score: 0</p>
+      <button class="game__players--button-x">X</button>
+       <p class="game__score"></p>
      </div>
 
      <div class="game__players--xo">
-      <button class="game__players--button">o</button>
-        <p class="game__score">score: 0</p>
+      <button class="game__players--button-o">〇</button>
+        <p class="game__score"></p>
      </div>
    </section>
 
    <!--game grid-->
         <p class="game__text"></p>
-        <section class="game__grid">
+      <section class="game__grid">
           <div class="game__grid--divider" >
           <button class="game__grid--one" id="game__grid--button" > </button>
           <button class="game__grid--two" id="game__grid--button"></button>
@@ -46,7 +47,7 @@
           <button class="game__grid--nine" id="game__grid--button"></button>
           </div>
         </section>
-        <p class="game__button--restart">Restart Game</p>
+        <p class="game__button--restart">Start the game! </p>
    </section>
 <script type="module" src="/src/main.ts"></script>
   </body>
