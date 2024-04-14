@@ -84,7 +84,7 @@ $color-five: rgb(27, 61, 59);
       }
 
 
-      .game__score{
+      .game__scoreX,.game__scoreO {
         margin: 0px;
           padding: 0px;
         font-size:250%;
@@ -95,7 +95,10 @@ $color-five: rgb(27, 61, 59);
   }
 
   .game__text{
-    font-family: $font-game;
+    font-family: $font-text;
+    font-weight: bold;
+    color: $color-five;
+    
   }
   .game__grid{
     padding:0px;
