@@ -9,7 +9,7 @@ const buttonX =document.querySelector<HTMLButtonElement>(".game__players--button
 const scoreO = document.querySelector<HTMLButtonElement>(".game__scoreO")
 const scoreX = document.querySelector<HTMLButtonElement>(".game__scoreX")
 const gridButton = document.querySelectorAll<HTMLButtonElement>("#game__grid--button")
-const gridOne = document.querySelector<HTMLElement>(".game__grid--one")
+//const gridOne = document.querySelector<HTMLElement>(".game__grid--one")
 
 
 //throw the error
@@ -20,9 +20,8 @@ if (
   !buttonX ||
   !scoreO ||
   !scoreX ||
-  !gridButton||
-  !gridOne
-  
+  !gridButton
+ 
   ){
     throw new Error ("Issue with selectors");
   }
@@ -31,12 +30,14 @@ if (
 
 let buttonStart= "Start the game! ";
 let buttonRestart="Restart the game";
-let playerOne="none";
-let playerTwo="none";
+let currentPlayer="";
+let playerOne="";
+let playerTwo="";
 let isSymbolChosenO = true;
 let isSymbolChosenX = true;
  buttonO.disabled = true;
 buttonX.disabled = true;
+
 
 
 //start the game 
@@ -65,6 +66,9 @@ const handleStartGameButton=(event:Event)=>{
    isSymbolChosenX = true;
   buttonO.disabled = true;
    buttonX.disabled = true;
+   gridButton.forEach((button)=>{
+    button.innerText="";
+   })
  }
   
 }
@@ -87,6 +91,7 @@ const handleButtons=(event :Event) =>{
     scoreO.innerText="0"
   scoreX.innerText="0"
   gameText.innerText=""
+  currentPlayer=playerOne;
   isSymbolChosenO = true;
    isSymbolChosenX = false;
   buttonO.disabled = false;
@@ -103,8 +108,9 @@ const handleButtons=(event :Event) =>{
     scoreO.innerText="0"
   scoreX.innerText="0"
   gameText.innerText=""
+  currentPlayer=playerOne;
   isSymbolChosenO = false;
-   isSymbolChosenX = true;
+  isSymbolChosenX = true;
   buttonO.disabled = true;
    buttonX.disabled = false;
 
@@ -116,9 +122,29 @@ buttonX.addEventListener("click",handleButtons)
 
 
 
+//function to play the game
+const handleGridButtons= (event:Event)=>{
+  const clickedGridButton =event.target  as HTMLButtonElement
+  console.log("the gird button with class", clickedGridButton.classList +" "+ "was clicked")
+
+if(!clickedGridButton.innerText && currentPlayer){
+  console.log(playerOne)
+clickedGridButton.innerText=currentPlayer
+currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
+}else{
+  console.log("This button is already filled");
+}
+  
 
 
 
+
+}
+
+
+gridButton.forEach((button)=>{
+ button.addEventListener("click", handleGridButtons)
+})
 
 
 
