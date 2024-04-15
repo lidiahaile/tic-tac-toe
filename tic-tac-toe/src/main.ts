@@ -1,4 +1,5 @@
 import './style.scss'
+import confetti from "canvas-confetti"
 
 
 //accessing HTML elements
@@ -82,7 +83,7 @@ const handleStartGameButton=(event:Event)=>{
 
 
 
-//handle chose button and playerOne/playerTwo
+//handle chosen button and playerOne/playerTwo
 const handleButtons=(event :Event) =>{
   console.log("the buttons were clicked", event)
   const clickedButton = event.target
@@ -145,7 +146,8 @@ clickedGridButton.innerText=currentPlayer
 
 
  if (checkWinner(currentPlayer)) {
-gameText.innerText = `${currentPlayer} wins!`
+gameText.innerText = `${currentPlayer} wins!`;
+  confetti();
  if (currentPlayer=="X") {
 scoreButtonX++
 scoreX.innerText=String(scoreButtonX)
