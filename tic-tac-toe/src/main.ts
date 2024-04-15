@@ -33,11 +33,15 @@ let buttonRestart="Restart the game";
 let currentPlayer="";
 let playerOne="";
 let playerTwo="";
-let isSymbolChosenO = true;
-let isSymbolChosenX = true;
+let scoreButtonO:number
+let scoreButtonX:number
  buttonO.disabled = true;
 buttonX.disabled = true;
 
+//let gameGrid : String[] = [];
+gridButton.forEach(button => {
+    button.disabled = true
+})
 
 
 //start the game 
@@ -48,8 +52,6 @@ const handleStartGameButton=(event:Event)=>{
   startButton.innerText=buttonRestart;
   gameText.innerText="Choose symbol";
   buttonStart=""
-   isSymbolChosenO = true;
-   isSymbolChosenX = true;
   buttonO.disabled = false;
    buttonX.disabled = false;
  }
@@ -58,17 +60,18 @@ const handleStartGameButton=(event:Event)=>{
   buttonStart= "Start the game! ";
   startButton.innerText=buttonStart;
   gameText.innerText="";
-  scoreO.innerText=""
-  scoreX.innerText=""
   playerOne="";
   playerTwo="";
-  isSymbolChosenO = true;
-   isSymbolChosenX = true;
   buttonO.disabled = true;
    buttonX.disabled = true;
    gridButton.forEach((button)=>{
     button.innerText="";
+     button.disabled = true;
    })
+    scoreButtonO=0
+   scoreButtonX=0
+   scoreO.innerText=""
+   scoreX.innerText=""
  }
   
 }
@@ -86,17 +89,20 @@ const handleButtons=(event :Event) =>{
   if (clickedButton==buttonO ){
    playerOne=buttonO.innerText
    playerTwo=buttonX.innerText
+   currentPlayer=playerOne;
     console.log("player one is:",playerOne)
     console.log("player two is:" ,playerTwo)
-    scoreO.innerText="0"
-  scoreX.innerText="0"
+   scoreButtonO=0
+   scoreButtonX=0
+    scoreO.innerText=String(scoreButtonO)
+  scoreX.innerText=String(scoreButtonX)
+
   gameText.innerText=""
-  currentPlayer=playerOne;
-  isSymbolChosenO = true;
-   isSymbolChosenX = false;
   buttonO.disabled = false;
    buttonX.disabled = true;
-
+gridButton.forEach(button => {
+    button.disabled = false
+})
 
 
   }
@@ -105,15 +111,18 @@ const handleButtons=(event :Event) =>{
     playerTwo=buttonO.innerText
     console.log("player one is:",playerOne)
     console.log("player two is:" ,playerTwo)
-    scoreO.innerText="0"
-  scoreX.innerText="0"
+  
   gameText.innerText=""
   currentPlayer=playerOne;
-  isSymbolChosenO = false;
-  isSymbolChosenX = true;
   buttonO.disabled = true;
    buttonX.disabled = false;
-
+ scoreButtonO=0
+   scoreButtonX=0
+    scoreO.innerText=String(scoreButtonO);
+  scoreX.innerText=String(scoreButtonX);
+gridButton.forEach(button => {
+    button.disabled = false
+})
   }
 }
 
@@ -126,25 +135,76 @@ buttonX.addEventListener("click",handleButtons)
 const handleGridButtons= (event:Event)=>{
   const clickedGridButton =event.target  as HTMLButtonElement
   console.log("the gird button with class", clickedGridButton.classList +" "+ "was clicked")
-
-if(!clickedGridButton.innerText && currentPlayer){
-  console.log(playerOne)
+ 
+if(!clickedGridButton.innerText ){
+  console.log("current player is:",currentPlayer)
 clickedGridButton.innerText=currentPlayer
+ if (checkWinner(currentPlayer)) {
+gameText.innerText = `${currentPlayer} wins!`
+
+ if (currentPlayer=="X") {
+scoreButtonX++
+scoreX.innerText=String(scoreButtonX)
+ 
+ } else  {
+  scoreButtonO++
+   scoreO.innerText=String(scoreButtonO);
+ }
+
+gridButton.forEach((button)=>{
+button.innerText="";
+  });
+
+ }
 currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
+ 
 }else{
   console.log("This button is already filled");
 }
-  
-
-
-
 
 }
-
 
 gridButton.forEach((button)=>{
  button.addEventListener("click", handleGridButtons)
 })
+
+
+
+
+//winning combos
+
+const winningCombinations: number[][] = [
+    [0, 1, 2], // 1st row
+    [3, 4, 5], // 2nd row
+    [6, 7, 8], // 3rd row
+    [0, 3, 6], //1st column
+    [1, 4, 7], // 2nd column
+    [2, 5, 8], // 3rd column
+    [0, 4, 8], // Top-left to bottom-right diagonal
+    [2, 4, 6]  // Top-right to bottom-left diagonal
+];
+
+const checkWinner = (player: string): boolean => {
+ for (let i = 0; i < winningCombinations.length; i++) {
+    const combination = winningCombinations[i];
+    let isWinner = true;
+
+    for (let j = 0; j < combination.length; j++) {
+      const index = combination[j];
+      if (gridButton[index].innerText !== player) {
+        isWinner = false;
+        break; 
+      }
+    }
+
+    if (isWinner) {
+      return true; 
+    }
+  }
+  return false; // Player has not won after checking all combinations
+};
+
+
 
 
 

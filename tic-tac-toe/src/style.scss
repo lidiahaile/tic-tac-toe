@@ -68,6 +68,7 @@ $color-five: rgb(27, 61, 59);
         background-color: $color-four;
         border: none;
         color: $color-tertiary;
+       
     
       }
 
@@ -115,11 +116,16 @@ $color-five: rgb(27, 61, 59);
      margin:0;
     border: 3px solid $color-four;
     border-radius: 10px;
-    //border: 2px solid $color-secondary;
-    background-color: $color-primary
+    background-color: $color-primary;
+    font-size: 50px;
+    font-family: $font-game;
+  cursor: pointer;
+    
+     
     }
 
     .game__grid--divider{
+      display:flex;
       padding: 0px;
       border: 0px;
       margin: 0px;
