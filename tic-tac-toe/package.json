@@ -3,14 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://lidiahaile.github.io/tic-tac-toe",
+  "author": "lidia",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test:jest":"vitest"
+    "test:jest": "vitest",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
+    "gh-pages": "^6.1.1",
     "jest": "^29.7.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",

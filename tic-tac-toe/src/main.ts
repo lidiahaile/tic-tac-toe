@@ -45,7 +45,7 @@ gridButton.forEach(button => {
 
 
 //start the game 
-const handleStartGameButton=(event:Event)=>{
+export const handleStartGameButton=(event:Event)=>{
   console.log("Start the game event",event);
   //const clickStartButton = event.target as HTMLElement;
  if (buttonStart){
