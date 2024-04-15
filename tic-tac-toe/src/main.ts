@@ -131,6 +131,8 @@ buttonX.addEventListener("click",handleButtons)
 
 
 
+
+
 //function to play the game
 const handleGridButtons= (event:Event)=>{
   const clickedGridButton =event.target  as HTMLButtonElement
@@ -148,8 +150,8 @@ gameText.innerText = `${currentPlayer} wins!`
 scoreButtonX++
 scoreX.innerText=String(scoreButtonX)
  } else  {
-  scoreButtonO++
-   scoreO.innerText=String(scoreButtonO);
+scoreButtonO++
+scoreO.innerText=String(scoreButtonO);
  }
 
 gridButton.forEach((button)=>{
@@ -163,11 +165,9 @@ if (currentPlayer === playerOne) {
   currentPlayer = playerOne; 
 }
 
-
 }else{
   console.log("This button is already filled");
 }
-
 }
 
 gridButton.forEach((button)=>{
@@ -187,7 +187,7 @@ const winningCombinations: number[][] = [
     [1, 4, 7], // 2nd column
     [2, 5, 8], // 3rd column
     [0, 4, 8], // Top-left to bottom-right diagonal
-    [2, 4, 6]  // Top-right to bottom-left diagonal
+    [2, 4, 6]  //Top-right to bottom-right diagonal
 ];
 
 const checkWinner = (player: string): boolean => {
