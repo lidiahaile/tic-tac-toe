@@ -136,16 +136,17 @@ const handleGridButtons= (event:Event)=>{
   const clickedGridButton =event.target  as HTMLButtonElement
   console.log("the gird button with class", clickedGridButton.classList +" "+ "was clicked")
  
+  
 if(!clickedGridButton.innerText ){
   console.log("current player is:",currentPlayer)
 clickedGridButton.innerText=currentPlayer
+
+
  if (checkWinner(currentPlayer)) {
 gameText.innerText = `${currentPlayer} wins!`
-
  if (currentPlayer=="X") {
 scoreButtonX++
 scoreX.innerText=String(scoreButtonX)
- 
  } else  {
   scoreButtonO++
    scoreO.innerText=String(scoreButtonO);
@@ -156,8 +157,13 @@ button.innerText="";
   });
 
  }
-currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
- 
+if (currentPlayer === playerOne) {
+  currentPlayer = playerTwo; 
+} else {
+  currentPlayer = playerOne; 
+}
+
+
 }else{
   console.log("This button is already filled");
 }
@@ -187,8 +193,8 @@ const winningCombinations: number[][] = [
 const checkWinner = (player: string): boolean => {
  for (let i = 0; i < winningCombinations.length; i++) {
     const combination = winningCombinations[i];
-    let isWinner = true;
 
+    let isWinner = true;
     for (let j = 0; j < combination.length; j++) {
       const index = combination[j];
       if (gridButton[index].innerText !== player) {
@@ -201,7 +207,7 @@ const checkWinner = (player: string): boolean => {
       return true; 
     }
   }
-  return false; // Player has not won after checking all combinations
+  return false; 
 };
 
 
