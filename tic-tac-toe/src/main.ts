@@ -10,7 +10,7 @@ const buttonX =document.querySelector<HTMLButtonElement>(".game__players--button
 const scoreO = document.querySelector<HTMLButtonElement>(".game__scoreO")
 const scoreX = document.querySelector<HTMLButtonElement>(".game__scoreX")
 const gridButton = document.querySelectorAll<HTMLButtonElement>("#game__grid--button")
-//const gridOne = document.querySelector<HTMLElement>(".game__grid--one")
+
 
 
 //throw the error
@@ -28,7 +28,7 @@ if (
   }
 
 
-
+//variables
 let buttonStart= "Start the game! ";
 let buttonRestart="Restart the game";
 let currentPlayer="";
@@ -36,16 +36,16 @@ let playerOne="";
 let playerTwo="";
 let scoreButtonO:number
 let scoreButtonX:number
- buttonO.disabled = true;
+buttonO.disabled = true;
 buttonX.disabled = true;
 
-//let gameGrid : String[] = [];
+//disable each button of the grid if the game hasn't started
 gridButton.forEach(button => {
     button.disabled = true
 })
 
 
-//start the game 
+//start the game and choose symbol
 const handleStartGameButton=(event:Event)=>{
   console.log("Start the game event",event);
   //const clickStartButton = event.target as HTMLElement;
@@ -56,7 +56,7 @@ const handleStartGameButton=(event:Event)=>{
   buttonO.disabled = false;
    buttonX.disabled = false;
  }
- //restart the game
+ //restart the game and set scores to 0
  else if(buttonRestart && buttonStart===""){
   buttonStart= "Start the game! ";
   startButton.innerText=buttonStart;
@@ -113,20 +113,19 @@ gridButton.forEach(button => {
     console.log("player one is:",playerOne)
     console.log("player two is:" ,playerTwo)
   
-  gameText.innerText=""
-  currentPlayer=playerOne;
-  buttonO.disabled = true;
+   gameText.innerText=""
+   currentPlayer=playerOne;
+   buttonO.disabled = true;
    buttonX.disabled = false;
- scoreButtonO=0
-   scoreButtonX=0
+   scoreButtonO=0
+    scoreButtonX=0
     scoreO.innerText=String(scoreButtonO);
-  scoreX.innerText=String(scoreButtonX);
-gridButton.forEach(button => {
+    scoreX.innerText=String(scoreButtonX);
+    gridButton.forEach(button => {
     button.disabled = false
-})
+    });
   }
 }
-
 buttonO.addEventListener("click",handleButtons)
 buttonX.addEventListener("click",handleButtons)
 
@@ -134,7 +133,7 @@ buttonX.addEventListener("click",handleButtons)
 
 
 
-//function to play the game
+//function to play the game and check the winner
 const handleGridButtons= (event:Event)=>{
   const clickedGridButton =event.target  as HTMLButtonElement
   console.log("the gird button with class", clickedGridButton.classList +" "+ "was clicked")
@@ -144,7 +143,7 @@ if(!clickedGridButton.innerText ){
   console.log("current player is:",currentPlayer)
 clickedGridButton.innerText=currentPlayer
 
-
+/////check if there is a winner =>update score and empty grid
  if (checkWinner(currentPlayer)) {
 gameText.innerText = `${currentPlayer} wins!`;
   confetti();
@@ -166,7 +165,7 @@ if (currentPlayer === playerOne) {
 } else {
   currentPlayer = playerOne; 
 }
-
+///if the button has already been clicked, the player cannot input
 }else{
   console.log("This button is already filled");
 }
@@ -178,9 +177,7 @@ gridButton.forEach((button)=>{
 
 
 
-
 //winning combos
-
 const winningCombinations: number[][] = [
     [0, 1, 2], // 1st row
     [3, 4, 5], // 2nd row
@@ -192,6 +189,8 @@ const winningCombinations: number[][] = [
     [2, 4, 6]  //Top-right to bottom-right diagonal
 ];
 
+
+//function to find any winning combos
 const checkWinner = (player: string): boolean => {
  for (let i = 0; i < winningCombinations.length; i++) {
     const combination = winningCombinations[i];
