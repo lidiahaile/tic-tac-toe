@@ -162,15 +162,12 @@ gridButton.forEach((button)=>{
 button.innerText="";
 })
 }
-
 //6.4 switch player for the next turn
 if (currentPlayer === playerOne) {
   currentPlayer = playerTwo; 
 } else {
   currentPlayer = playerOne; 
 }
- 
- 
 //6.5 if the button has already been clicked, the player cannot input
 }else {
   console.log("This button is already filled");
@@ -181,6 +178,9 @@ if (currentPlayer === playerOne) {
 gridButton.forEach((button)=>{
  button.addEventListener("click", handleGridButtons)
 })
+
+
+
 
 
 //7.winning combos
@@ -210,7 +210,7 @@ if (gridButton[index].innerText !== player) {
   break; 
   }
 }
-if (isWinner) {
+ if (isWinner) {
   return true; 
   }
 }
